@@ -34,6 +34,7 @@ export interface Settings {
 
   enableVideoCtrlBarOnVideoCard: boolean
   hoverVideoCardDelayed: boolean
+  enableExtendedPlaybackSpeeds: boolean
 
   // Desktop & Dock
   useOldTopBar: boolean

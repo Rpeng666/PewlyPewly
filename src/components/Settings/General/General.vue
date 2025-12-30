@@ -191,6 +191,12 @@ watch(() => settings.value.language, (newValue) => {
         </SettingsItem>
       </template>
     </SettingsItemGroup>
+
+    <SettingsItemGroup :title="$t('settings.group_video')">
+      <SettingsItem :title="$t('settings.enable_extended_playback_speeds')">
+        <Radio v-model="settings.enableExtendedPlaybackSpeeds" />
+      </SettingsItem>
+    </SettingsItemGroup>
   </div>
 </template>
 

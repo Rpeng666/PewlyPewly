@@ -82,6 +82,7 @@ settings:
   group_common: Common
   group_languages_and_fonts: Languages & Fonts
   group_link_opening_behavior: Link Opening Behavior
+  group_video: Video Playback
   group_video_card: Video Card
   group_performance: Frosted Glass & Performance
   group_topbar: Top Bar
@@ -163,6 +164,7 @@ settings:
 
   enable_video_preview: Enable video preview feature (if possible)
   enable_video_ctrl_bar_on_video_card: Display the video control bar on the video card
+  enable_extended_playback_speeds: Enable extended playback speeds (3x, 4x, 5x)
   hover_video_card_delayed: Delayed video preview on hover over the video card
 
   # Desktop & Dock

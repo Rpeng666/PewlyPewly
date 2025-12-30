@@ -82,6 +82,7 @@ settings:
   group_common: 通用
   group_languages_and_fonts: 语言和字体
   group_link_opening_behavior: 链接打开行为
+  group_video: 视频播放
   group_video_card: 视频卡片
   group_performance: 毛玻璃和性能
   group_topbar: 顶栏
@@ -161,6 +162,7 @@ settings:
 
   enable_video_preview: 启用视频预览功能（如果可以的话）
   enable_video_ctrl_bar_on_video_card: 在视频卡片上显示视频控制栏
+  enable_extended_playback_speeds: 启用扩展倍速 (3x, 4x, 5x)
   hover_video_card_delayed: 将鼠标悬停在视频卡片上时延迟视频预览
 
   # Desktop & Dock
