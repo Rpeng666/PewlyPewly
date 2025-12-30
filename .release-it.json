@@ -22,8 +22,7 @@
       "pnpm run pack:zip-firefox-sources"
     ],
     "after:release": [
-      "gh release upload v${version} extension.zip extension-firefox.zip",
-      "pnpm run submit"
+      "gh release upload v${version} extension.zip extension-firefox.zip"
     ]
   }
 }
