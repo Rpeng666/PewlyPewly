@@ -28,7 +28,7 @@ function getPageParam(): AppPage | null {
   return null
 }
 
-const activatedPage = ref<AppPage>(getPageParam() || (settings.value.dockItemsConfig.find(e => e.visible === true)?.page || AppPage.Home))
+const activatedPage = ref<AppPage>(getPageParam() || (settings.value.dockItemsConfig.find((e: { visible: boolean }) => e.visible === true)?.page || AppPage.Home))
 const pages = {
   [AppPage.Home]: defineAsyncComponent(() => import('./Home/Home.vue')),
   [AppPage.Search]: defineAsyncComponent(() => import('./Search/Search.vue')),
@@ -74,7 +74,7 @@ const iframePageURL = computed((): string => {
   // If the iframe is not the BiliBili homepage or in iframe, then don't show the iframe page
   if (!isHomePage(window.self.location.href) || isInIframe())
     return ''
-  const currentDockItemConfig = settings.value.dockItemsConfig.find(e => e.page === activatedPage.value)
+  const currentDockItemConfig = settings.value.dockItemsConfig.find((e: { page: AppPage }) => e.page === activatedPage.value)
   if (currentDockItemConfig) {
     return currentDockItemConfig.useOriginalBiliPage || !mainStore.getDockItemByPage(activatedPage.value)?.hasBewlyPage ? mainStore.getBiliWebPageURLByPage(activatedPage.value) : ''
   }
@@ -108,11 +108,11 @@ const showTopBar = computed((): boolean => {
 
   // when using original bilibili homepage, show top bar
   return settings.value.useOriginalBilibiliHomepage
-  // when on home page and not using original bilibili page, show top bar
+    // when on home page and not using original bilibili page, show top bar
     || (isHomePage() && !settingsStore.getDockItemIsUseOriginalBiliPage(activatedPage.value) && !isInIframe())
-  // when in iframe and using original bilibili page, show top bar
+    // when in iframe and using original bilibili page, show top bar
     || (settingsStore.getDockItemIsUseOriginalBiliPage(activatedPage.value) && isInIframe())
-  // when not on home page, show top bar
+    // when not on home page, show top bar
     || !isHomePage()
 })
 
@@ -330,13 +330,8 @@ provide<BewlyAppProvider>('BEWLY_APP', {
 </script>
 
 <template>
-  <div
-    id="bewly-wrapper"
-    ref="mainAppRef"
-    class="bewly-wrapper"
-    :class="{ dark: isDark }"
-    text="$bew-text-1 size-$bew-base-font-size"
-  >
+  <div id="bewly-wrapper" ref="mainAppRef" class="bewly-wrapper" :class="{ dark: isDark }"
+    text="$bew-text-1 size-$bew-base-font-size">
     <!-- Background -->
     <template v-if="showBewlyPage">
       <AppBackground :activated-page="activatedPage" />
@@ -348,59 +343,31 @@ provide<BewlyAppProvider>('BEWLY_APP', {
     </KeepAlive>
 
     <!-- Dock & RightSideButtons -->
-    <div
-      v-if="!isInIframe()"
-      pos="absolute top-0 left-0" w-full h-full overflow-hidden
-      pointer-events-none
-    >
-      <Dock
-        v-if="!settings.useOriginalBilibiliHomepage && (settings.alwaysUseDock || (showBewlyPage || iframePageURL))"
-        pointer-events-auto
-        :activated-page="activatedPage"
-        @settings-visibility-change="toggleSettings"
-        @refresh="handleThrottledPageRefresh"
-        @back-to-top="handleThrottledBackToTop"
-        @dock-item-click="handleDockItemClick"
-      />
-      <SideBar
-        v-else
-        pointer-events-auto
-        @settings-visibility-change="toggleSettings"
-      />
+    <div v-if="!isInIframe()" pos="absolute top-0 left-0" w-full h-full overflow-hidden
+pointer-events-none>
+      <Dock v-if="!settings.useOriginalBilibiliHomepage && (settings.alwaysUseDock || (showBewlyPage || iframePageURL))"
+        pointer-events-auto :activated-page="activatedPage" @settings-visibility-change="toggleSettings"
+        @refresh="handleThrottledPageRefresh" @back-to-top="handleThrottledBackToTop"
+        @dock-item-click="handleDockItemClick" />
+      <SideBar v-else pointer-events-auto @settings-visibility-change="toggleSettings" />
     </div>
 
     <!-- TopBar -->
-    <div
-      v-if="showTopBar"
-      m-auto max-w="$bew-page-max-width"
-    >
+    <div v-if="showTopBar" m-auto max-w="$bew-page-max-width">
       <BewlyOrBiliTopBarSwitcher v-if="settings.showBewlyOrBiliTopBarSwitcher" />
 
-      <OldTopBar
-        v-if="settings.useOldTopBar"
-        pos="top-0 left-0" z="99 hover:1001" w-full
-      />
-      <TopBar
-        v-else
-        pos="top-0 left-0" z="99 hover:1001" w-full
-      />
+      <OldTopBar v-if="settings.useOldTopBar" pos="top-0 left-0" z="99 hover:1001" w-full />
+      <TopBar v-else pos="top-0 left-0" z="99 hover:1001" w-full />
     </div>
 
-    <div
-      v-if="!settings.useOriginalBilibiliHomepage"
-      pos="absolute top-0 left-0" w-full h-full
-      :style="{
-        height: showBewlyPage || iframePageURL ? '100dvh' : '0',
-      }"
-    >
+    <div v-if="!settings.useOriginalBilibiliHomepage" pos="absolute top-0 left-0" w-full h-full :style="{
+      height: showBewlyPage || iframePageURL ? '100dvh' : '0',
+    }">
       <Transition name="fade">
         <template v-if="showBewlyPage">
           <OverlayScrollbarsComponent ref="scrollbarRef" element="div" h-inherit defer @os-scroll="handleOsScroll">
             <main m-auto max-w="$bew-page-max-width">
-              <div
-                p="t-[calc(var(--bew-top-bar-height)+10px)]" m-auto
-                w="lg:[calc(100%-200px)] [calc(100%-150px)]"
-              >
+              <div p="t-[calc(var(--bew-top-bar-height)+10px)]" m-auto w="lg:[calc(100%-200px)] [calc(100%-150px)]">
                 <Transition name="page-fade">
                   <Component :is="pages[activatedPage]" />
                 </Transition>
@@ -415,18 +382,15 @@ provide<BewlyAppProvider>('BEWLY_APP', {
       </Transition>
     </div>
 
-    <IframeDrawer
-      v-if="showIframeDrawer"
-      :url="iframeDrawerURL"
-      @close="showIframeDrawer = false"
-    />
+    <IframeDrawer v-if="showIframeDrawer" :url="iframeDrawerURL" @close="showIframeDrawer = false" />
   </div>
 </template>
 
 <style lang="scss" scoped>
 .bewly-wrapper {
+
   // To fix the filter used in `.bewly-wrapper` that cause the positions of elements become discorded.
-  > * > * {
+  >*>* {
     filter: var(--bew-filter-force-dark);
   }
 }

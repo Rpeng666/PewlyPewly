@@ -3,12 +3,24 @@ import 'vue-toastification/dist/index.css'
 import { createPinia } from 'pinia'
 import type { App } from 'vue'
 import Toast, { POSITION } from 'vue-toastification'
-import { getCurrentContext } from 'webext-bridge'
 
 import components from '~/components'
 import { i18n } from '~/utils/i18n'
 
 const pinia = createPinia()
+
+function getCurrentContext() {
+  if (typeof window === 'undefined')
+    return 'background'
+  if (window.location.protocol === 'chrome-extension:' || window.location.protocol === 'moz-extension:') {
+    if (window.location.pathname.includes('popup'))
+      return 'popup'
+    if (window.location.pathname.includes('options'))
+      return 'options'
+    return 'background'
+  }
+  return 'content-script'
+}
 
 export async function setupApp(app: App) {
   const context = getCurrentContext()

@@ -16,11 +16,6 @@ function handleMessage(message: Message) {
 }
 
 export function setupTabMsgLstnrs() {
-  browser.runtime.onMessage.removeListener(handleConnect)
-  browser.runtime.onMessage.addListener(handleConnect)
-}
-
-function handleConnect() {
   browser.runtime.onMessage.removeListener(handleMessage)
   browser.runtime.onMessage.addListener(handleMessage)
 }

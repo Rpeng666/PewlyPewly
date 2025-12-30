@@ -172,6 +172,13 @@ async function getRecommendVideos() {
       ps: PAGE_SIZE,
     })
 
+    console.warn('response:', response)
+
+    if (!response) {
+      noMoreContent.value = true
+      return
+    }
+
     if (!response.data) {
       noMoreContent.value = true
       return
@@ -227,9 +234,9 @@ async function getRecommendVideos() {
 
     if (!needToLoginFirst.value) {
       await nextTick()
-      if (!await haveScrollbar() || filledItems.length < PAGE_SIZE || filledItems.length < 1) {
-        getRecommendVideos()
-      }
+      // if (!await haveScrollbar() || filledItems.length < PAGE_SIZE || filledItems.length < 1) {
+      //   getRecommendVideos()
+      // }
     }
   }
 }
