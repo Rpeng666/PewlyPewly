@@ -63,6 +63,18 @@ settings:
   menu_bewly_pages: BewlyBewly 页面
   menu_search_page: 搜索页
   menu_home: 首页
+  menu_save_my_attention: 拯救我的注意力
+  menu_simple_mode: 简洁模式
+  enable_simple_mode: 启用简洁模式
+  enable_simple_mode_desc: 开启后将隐藏相关推荐视频
+  hide_comments: 隐藏评论区
+  hide_comments_desc: 开启后将隐藏视频详情页的评论区
+  only_show_followed_content: 仅显示关注内容
+  only_show_followed_content_desc: 开启后首页将仅显示关注视频，隐藏推荐、热门等内容
+  hide_video_recommendations: 隐藏视频推荐
+  hide_video_recommendations_desc: 开启后将隐藏视频播放页的推荐视频列表
+  hide_ending_recommendations: 隐藏视频结束推荐
+  hide_ending_recommendations_desc: 开启后将隐藏视频播放结束后的推荐内容
   menu_compatibility: 兼容性
   menu_about: 关于
 

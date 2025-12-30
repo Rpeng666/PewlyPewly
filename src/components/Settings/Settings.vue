@@ -17,6 +17,7 @@ const settingsMenu = {
   [MenuType.DesktopAndDock]: defineAsyncComponent(() => import('./DesktopAndDock/DesktopAndDock.vue')),
   [MenuType.Appearance]: defineAsyncComponent(() => import('./Appearance/Appearance.vue')),
   [MenuType.BewlyPages]: defineAsyncComponent(() => import('./BewlyPages/BewlyPages.vue')),
+  [MenuType.SaveMyAttention]: defineAsyncComponent(() => import('./SaveMyAttention/SaveMyAttention.vue')),
   [MenuType.Compatibility]: defineAsyncComponent(() => import('./Compatibility/Compatibility.vue')),
   // [MenuType.BilibiliSettings]: defineAsyncComponent(() => import('./BilibiliSettings/BilibiliSettings.vue')),
   [MenuType.About]: defineAsyncComponent(() => import('./About/About.vue')),
@@ -72,6 +73,12 @@ const settingsMenuItems = computed((): MenuItem[] => {
       icon: 'i-mingcute:table-2-line',
       iconActivated: 'i-mingcute:table-2-fill',
       title: t('settings.menu_bewly_pages'),
+    },
+    {
+      value: MenuType.SaveMyAttention,
+      icon: 'i-mingcute:minimize-line',
+      iconActivated: 'i-mingcute:minimize-fill',
+      title: t('settings.menu_save_my_attention'),
     },
     {
       value: MenuType.Compatibility,

@@ -284,4 +284,98 @@ export function setupNecessarySettingsWatchers() {
     },
     { immediate: true },
   )
+
+  let hideCommentsStyleEl: HTMLStyleElement | undefined
+
+  watch(
+    () => [settings.value.simpleModeDisableComments],
+    ([disableComments]) => {
+      // eslint-disable-next-line no-console
+      console.log('BewlyBewly Debug: Watcher triggered', { disableComments })
+
+      if (disableComments) {
+        // eslint-disable-next-line no-console
+        console.log('BewlyBewly Debug: Condition met, attempting to hide comments')
+        if (!hideCommentsStyleEl) {
+          // eslint-disable-next-line no-console
+          console.log('BewlyBewly Debug: Injecting CSS to hide comments')
+          hideCommentsStyleEl = injectCSS(`
+            #comment,
+            #commentapp,
+            .ad-report,
+            .comment-container,
+            .comment-m,
+            .bili-comment-container,
+            .bb-comment,
+            bili-comments,
+            bili-comment-thread-renderer,
+            bili-comment-renderer {
+              display: none !important;
+            }
+          `)
+        }
+      }
+      else {
+        // eslint-disable-next-line no-console
+        console.log('BewlyBewly Debug: Condition not met, showing comments')
+        if (hideCommentsStyleEl) {
+          // eslint-disable-next-line no-console
+          console.log('BewlyBewly Debug: Removing CSS')
+          document.documentElement.removeChild(hideCommentsStyleEl)
+          hideCommentsStyleEl = undefined
+        }
+      }
+    },
+    { immediate: true },
+  )
+
+  let hideVideoRecommendationsStyleEl: HTMLStyleElement | undefined
+
+  watch(
+    () => [settings.value.simpleMode, settings.value.simpleModeHideVideoRecommendations],
+    ([simpleMode, hideVideoRecommendations]) => {
+      if (simpleMode && hideVideoRecommendations) {
+        if (!hideVideoRecommendationsStyleEl) {
+          hideVideoRecommendationsStyleEl = injectCSS(`
+            #slide_ad,
+            .rcmd-tab,
+            .rec-list {
+              display: none !important;
+            }
+          `)
+        }
+      }
+      else {
+        if (hideVideoRecommendationsStyleEl) {
+          document.documentElement.removeChild(hideVideoRecommendationsStyleEl)
+          hideVideoRecommendationsStyleEl = undefined
+        }
+      }
+    },
+    { immediate: true },
+  )
+
+  let hideEndingRecommendationsStyleEl: HTMLStyleElement | undefined
+
+  watch(
+    () => [settings.value.simpleMode, settings.value.simpleModeHideEndingRecommendations],
+    ([simpleMode, hideEndingRecommendations]) => {
+      if (simpleMode && hideEndingRecommendations) {
+        if (!hideEndingRecommendationsStyleEl) {
+          hideEndingRecommendationsStyleEl = injectCSS(`
+            .bpx-player-ending-content {
+              display: none !important;
+            }
+          `)
+        }
+      }
+      else {
+        if (hideEndingRecommendationsStyleEl) {
+          document.documentElement.removeChild(hideEndingRecommendationsStyleEl)
+          hideEndingRecommendationsStyleEl = undefined
+        }
+      }
+    },
+    { immediate: true },
+  )
 }

@@ -63,6 +63,18 @@ settings:
   menu_bewly_pages: BewlyBewly Pages
   menu_search_page: Search Page
   menu_home: Home
+  menu_save_my_attention: Fuck Recommendation
+  menu_simple_mode: Simple Mode
+  enable_simple_mode: Enable Simple Mode
+  enable_simple_mode_desc: Hide related recommended videos after enabling
+  hide_comments: Hide Comments
+  hide_comments_desc: Hide comments section on video detail page after enabling
+  only_show_followed_content: Only Show Followed Content
+  only_show_followed_content_desc: Only show followed videos on home page, hide recommended, trending, etc. after enabling
+  hide_video_recommendations: Hide Video Recommendations
+  hide_video_recommendations_desc: Hide recommended videos list on video playback page after enabling
+  hide_ending_recommendations: Hide Ending Recommendations
+  hide_ending_recommendations_desc: Hide recommended content after video playback ends after enabling
   menu_compatibility: Compatibility
   menu_about: About
 

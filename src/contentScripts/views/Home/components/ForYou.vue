@@ -322,85 +322,96 @@ defineExpose({ initData })
 
 <template>
   <div>
-    <Empty v-if="needToLoginFirst" mt-6 :description="$t('common.please_log_in_first')">
-      <Button type="primary" @click="jumpToLoginPage()">
-        {{ $t('common.login') }}
-      </Button>
-    </Empty>
-
-    <div
-      v-else
-      ref="containerRef"
-      m="b-0 t-0" relative w-full h-full
-      :class="gridClass"
-    >
-      <template v-if="settings.recommendationMode === 'web'">
-        <VideoCard
-          v-for="video in videoList"
-          :key="video.uniqueId"
-          :skeleton="!video.item"
-          type="rcmd"
-          :video="video.item ? {
-            id: video.item.id,
-            duration: video.item.duration,
-            title: video.item.title,
-            cover: video.item.pic,
-            author: {
-              name: video.item.owner.name,
-              authorFace: video.item.owner.face,
-              followed: !!video.item.is_followed,
-              mid: video.item.owner.mid,
-            },
-            view: video.item.stat.view,
-            danmaku: video.item.stat.danmaku,
-            publishedTimestamp: video.item.pubdate,
-            bvid: video.item.bvid,
-            cid: video.item.cid,
-          } : undefined"
-          show-preview
-          :horizontal="gridLayout !== 'adaptive'"
-          more-btn
-        />
-      </template>
-      <template v-else>
-        <VideoCard
-          v-for="video in appVideoList"
-          :key="video.uniqueId"
-          ref="videoCardRef"
-          :skeleton="!video.item"
-          type="appRcmd"
-          :video="video.item ? {
-            id: video.item.args.aid ?? 0,
-            durationStr: video.item.cover_right_text,
-            title: `${video.item.title}`,
-            cover: `${video.item.cover}`,
-            author: {
-              name: video.item?.mask?.avatar.text,
-              authorFace: video.item?.mask?.avatar.cover || video.item?.avatar?.cover,
-              followed: video.item?.bottom_rcmd_reason === '已关注' || video.item?.bottom_rcmd_reason === '已關注',
-              mid: video.item?.mask?.avatar.up_id,
-            },
-            capsuleText: video.item?.desc?.split('·')[1],
-            bvid: video.item.bvid,
-            viewStr: video.item.cover_left_text_1,
-            danmakuStr: video.item.cover_left_text_2,
-            cid: video.item?.player_args?.cid,
-            goto: video.item?.goto,
-            url: video.item?.goto === 'bangumi' ? video.item.uri : '',
-            type: video.item.card_goto === 'bangumi' ? 'bangumi' : isVerticalVideo(video.item.uri!) ? 'vertical' : 'horizontal',
-            threePointV2: video.item?.three_point_v2,
-          } : undefined"
-          show-preview
-          :horizontal="gridLayout !== 'adaptive'"
-          more-btn
-        />
-        <!-- :more-options="video.three_point_v2" -->
-      </template>
+    <div v-if="settings.simpleMode" class="flex flex-col items-center justify-center h-full mt-20">
+      <div class="text-xl font-bold mb-2">
+        简洁模式已开启
+      </div>
+      <div class="text-gray-500">
+        相关推荐视频已隐藏
+      </div>
     </div>
 
-    <Loading v-show="isLoading" />
-    <!-- no more content -->
-    <Empty v-if="noMoreContent" class="pb-4" :description="$t('common.no_more_content')" />
+    <template v-else>
+      <Empty v-if="needToLoginFirst" mt-6 :description="$t('common.please_log_in_first')">
+        <Button type="primary" @click="jumpToLoginPage()">
+          {{ $t('common.login') }}
+        </Button>
+      </Empty>
+
+      <div
+        v-else
+        ref="containerRef"
+        m="b-0 t-0" relative w-full h-full
+        :class="gridClass"
+      >
+        <template v-if="settings.recommendationMode === 'web'">
+          <VideoCard
+            v-for="video in videoList"
+            :key="video.uniqueId"
+            :skeleton="!video.item"
+            type="rcmd"
+            :video="video.item ? {
+              id: video.item.id,
+              duration: video.item.duration,
+              title: video.item.title,
+              cover: video.item.pic,
+              author: {
+                name: video.item.owner.name,
+                authorFace: video.item.owner.face,
+                followed: !!video.item.is_followed,
+                mid: video.item.owner.mid,
+              },
+              view: video.item.stat.view,
+              danmaku: video.item.stat.danmaku,
+              publishedTimestamp: video.item.pubdate,
+              bvid: video.item.bvid,
+              cid: video.item.cid,
+            } : undefined"
+            show-preview
+            :horizontal="gridLayout !== 'adaptive'"
+            more-btn
+          />
+        </template>
+        <template v-else>
+          <VideoCard
+            v-for="video in appVideoList"
+            :key="video.uniqueId"
+            ref="videoCardRef"
+            :skeleton="!video.item"
+            type="appRcmd"
+            :video="video.item ? {
+              id: video.item.args.aid ?? 0,
+              durationStr: video.item.cover_right_text,
+              title: `${video.item.title}`,
+              cover: `${video.item.cover}`,
+              author: {
+                name: video.item?.mask?.avatar.text,
+                authorFace: video.item?.mask?.avatar.cover || video.item?.avatar?.cover,
+                followed: video.item?.bottom_rcmd_reason === '已关注' || video.item?.bottom_rcmd_reason === '已關注',
+                mid: video.item?.mask?.avatar.up_id,
+              },
+              capsuleText: video.item?.desc?.split('·')[1],
+              bvid: video.item.bvid,
+              viewStr: video.item.cover_left_text_1,
+              danmakuStr: video.item.cover_left_text_2,
+              cid: video.item?.player_args?.cid,
+              goto: video.item?.goto,
+              url: video.item?.goto === 'bangumi' ? video.item.uri : '',
+              type: video.item.card_goto === 'bangumi' ? 'bangumi' : isVerticalVideo(video.item.uri!) ? 'vertical' : 'horizontal',
+              threePointV2: video.item?.three_point_v2,
+            } : undefined"
+            show-preview
+            :horizontal="gridLayout !== 'adaptive'"
+            more-btn
+          />
+        <!-- :more-options="video.three_point_v2" -->
+        </template>
+      </div>
+
+      <Loading v-show="isLoading" />
+      <!-- no more content -->
+      <Empty v-if="noMoreContent" class="pb-4" :description="$t('common.no_more_content')" />
+    </template>
   </div>
 </template>
 

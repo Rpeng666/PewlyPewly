@@ -43,7 +43,25 @@ watch(() => JSON.stringify(settings.value.homePageTabVisibilityList), () => {
   currentTabs.value = computeTabs()
 })
 
+watch(() => settings.value.simpleModeOnlyFollowed, (val) => {
+  currentTabs.value = computeTabs()
+  if (val)
+    activatedPage.value = HomeSubPage.Following
+  else if (!currentTabs.value.find(tab => tab.page === activatedPage.value))
+    activatedPage.value = currentTabs.value[0]?.page || HomeSubPage.ForYou
+})
+
 function computeTabs(): HomeTab[] {
+  if (settings.value.simpleModeOnlyFollowed) {
+    const followingTab = mainStore.homeTabs.find(tab => tab.page === HomeSubPage.Following)
+    return followingTab
+      ? [{
+          i18nKey: followingTab.i18nKey,
+          page: HomeSubPage.Following,
+        }]
+      : []
+  }
+
   // if homePageTabVisibilityList not fresh , set it to default
   if (!settings.value.homePageTabVisibilityList.length || settings.value.homePageTabVisibilityList.length !== mainStore.homeTabs.length)
     settings.value.homePageTabVisibilityList = mainStore.homeTabs.map(tab => ({ page: tab.page, visible: true }))

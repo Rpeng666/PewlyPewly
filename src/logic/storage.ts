@@ -85,6 +85,11 @@ export interface Settings {
   searchPageWallpaperBlurIntensity: number
 
   recommendationMode: 'web' | 'app'
+  simpleMode: boolean
+  simpleModeDisableComments: boolean
+  simpleModeOnlyFollowed: boolean
+  simpleModeHideVideoRecommendations: boolean
+  simpleModeHideEndingRecommendations: boolean
 
   // filter setting
   disableFilterForFollowedUser: boolean
@@ -189,6 +194,11 @@ export const originalSettings: Settings = {
   searchPageWallpaperBlurIntensity: 0,
 
   recommendationMode: 'web',
+  simpleMode: false,
+  simpleModeDisableComments: false,
+  simpleModeOnlyFollowed: false,
+  simpleModeHideVideoRecommendations: false,
+  simpleModeHideEndingRecommendations: false,
 
   // filter setting
   disableFilterForFollowedUser: false,
