@@ -75,6 +75,8 @@ settings:
   hide_video_recommendations_desc: 开启后将隐藏视频播放页的推荐视频列表
   hide_ending_recommendations: 隐藏视频结束推荐
   hide_ending_recommendations_desc: 开启后将隐藏视频播放结束后的推荐内容
+  disable_preview_images: 关闭预览图
+  disable_preview_images_desc: 开启后将隐藏视频播放器的预览图
   menu_compatibility: 兼容性
   menu_about: 关于
 

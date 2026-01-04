@@ -75,6 +75,8 @@ settings:
   hide_video_recommendations_desc: Hide recommended videos list on video playback page after enabling
   hide_ending_recommendations: Hide Ending Recommendations
   hide_ending_recommendations_desc: Hide recommended content after video playback ends after enabling
+  disable_preview_images: Disable Preview Images
+  disable_preview_images_desc: Hide video player preview image after enabling
   menu_compatibility: Compatibility
   menu_about: About
 

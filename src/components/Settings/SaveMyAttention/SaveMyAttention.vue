@@ -27,5 +27,8 @@ const { t } = useI18n()
     <SettingsItem :title="t('settings.hide_ending_recommendations')" :desc="t('settings.hide_ending_recommendations_desc')">
       <Radio v-model="settings.simpleModeHideEndingRecommendations" />
     </SettingsItem>
+    <SettingsItem :title="t('settings.disable_preview_images')" :desc="t('settings.disable_preview_images_desc')">
+      <Radio v-model="settings.simpleModeDisablePreviewImages" />
+    </SettingsItem>
   </SettingsItemGroup>
 </template>

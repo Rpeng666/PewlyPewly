@@ -273,11 +273,21 @@ provide('getVideoType', () => props.type!)
           >
             <!-- Video cover -->
             <Picture
+              v-if="!settings.simpleModeDisablePreviewImages"
               :src="`${removeHttpFromUrl(video.cover)}@672w_378h_1c_!web-home-common-cover`"
               loading="eager"
               w="full" max-w-full align-middle aspect-video object-cover
               rounded="$bew-radius"
             />
+            <div
+              v-else
+              w="full" max-w-full align-middle aspect-video
+              rounded="$bew-radius"
+              bg="$bew-fill-1"
+              flex="~ items-center justify-center"
+            >
+              <div i-mingcute-bilibili-line text-5xl text="$bew-text-3" />
+            </div>
 
             <div
               v-if="removed"

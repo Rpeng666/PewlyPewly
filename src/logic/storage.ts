@@ -91,6 +91,7 @@ export interface Settings {
   simpleModeOnlyFollowed: boolean
   simpleModeHideVideoRecommendations: boolean
   simpleModeHideEndingRecommendations: boolean
+  simpleModeDisablePreviewImages: boolean
 
   // filter setting
   disableFilterForFollowedUser: boolean
@@ -200,6 +201,7 @@ export const originalSettings: Settings = {
   simpleModeOnlyFollowed: false,
   simpleModeHideVideoRecommendations: false,
   simpleModeHideEndingRecommendations: false,
+  simpleModeDisablePreviewImages: false,
 
   // filter setting
   disableFilterForFollowedUser: false,
