@@ -3,13 +3,14 @@
 [English](README-en.md) | 官话 - 简体中文
 
 <div align="center">
-    <img src="./assets/Gemini_Generated_Image_bu4j01bu4j01bu4j.png" width="400">
+    <img src="./assets/Gemini_Generated_Image_bu4j01bu4j01bu4j.png" width="200">
   </a>
 </div>
 
+
 <h1 align="center">只需对您的 Bilibili 主页进行亿些小更改即可。</h1>
 
-<div align="center">
+
 
 
 > [!IMPORTANT]
@@ -21,6 +22,7 @@
 
 ## 🛡️ 拯救我的注意力 (Fuck Recommendation)
 
+
 > **你的注意力正在被掠夺**
 >
 > 在当今的互联网环境下，各大平台都在竭尽全力争夺你的注意力。推荐算法、无限下拉、红点通知……这些精心设计的机制只有一个目的：让你在平台上停留更久，从而卖出更多的广告。
@@ -30,6 +32,7 @@
 为了帮你夺回注意力的控制权，我们在原版 BewlyBewly 的基础上增加了 **Fuck Recommendation (拯救我的注意力)** 模式。
 
 开启此模式后，你可以：
+
 - **简洁模式**：隐藏首页的所有推荐视频，还你一个清爽的开始。
 - **隐藏评论区**：眼不见心不烦，避免陷入无意义的争论和情绪消耗。
 - **仅显示关注**：只看你主动选择关注的内容，拒绝算法投喂的“垃圾食品”。

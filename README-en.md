@@ -2,27 +2,26 @@ PewlyPewly
 
 [English] | 中文（简体）
 
-<div align="center"> <img src="./assets/Gemini_Generated_Image_bu4j01bu4j01bu4j.png" width="400"> </div> <h1 align="center">Make a few tiny changes to your Bilibili homepage.</h1>
+<div align="center"> <img src="./assets/Gemini_Generated_Image_bu4j01bu4j01bu4j.png" width="200"> </div> <h1 align="center">Make a few tiny changes to your Bilibili homepage.</h1>
 
-[!IMPORTANT]
-Acknowledgement & Disclaimer
+> [!IMPORTANT]
+> Acknowledgement & Disclaimer
+> 
+> This project is a modified version of
+> BewlyBewly.
+> 
+> The original project has been archived.
+> Sincere thanks to the original author for their excellent work.
 
-This project is a modified version of
-BewlyBewly
-.
+> This project is intended for personal learning and research purposes only.
+> Use at your own risk.
 
-The original project has been archived.
-Sincere thanks to the original author for their excellent work.
+## 🛡️ Reclaim My Attention (Fuck Recommendation)
 
-This project is intended for personal learning and research purposes only.
-Use at your own risk.
-
-🛡️ Reclaim My Attention (Fuck Recommendation)
-
-Your attention is being exploited
-
-In today’s internet ecosystem, major platforms are engaged in an all-out war for your attention.
-Recommendation algorithms, infinite scrolling, red-dot notifications—these mechanisms are carefully engineered with a single goal:
+> Your attention is being exploited
+> 
+> In today’s internet ecosystem, major platforms are engaged in an all-out war for > your attention.
+> Recommendation algorithms, infinite scrolling, red-dot notifications—these > mechanisms are carefully engineered with a single goal:
 
 Keep you staying longer, so more ads can be sold.
 
@@ -59,7 +58,7 @@ Hide preview thumbnails in the video player to reduce visual distraction.
 Our goal is simple:
 Free you from algorithmic manipulation and help you become the owner of your own attention again.
 
-⚡ Playback Enhancements
+## ⚡ Playback Enhancements
 
 Extended Playback Speed Options
 Adds 3.0x, 4.0x, and 5.0x speed options to the video player, making it easier to skim long videos efficiently.
