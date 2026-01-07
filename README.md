@@ -8,9 +8,8 @@
 </div>
 
 
+
 <h1 align="center">只需对您的 Bilibili 主页进行亿些小更改即可。</h1>
-
-
 
 
 > [!IMPORTANT]
@@ -19,6 +18,10 @@
 > 本项目修改自 [BewlyBewly](https://github.com/BewlyBewly/BewlyBewly)。原项目已经归档，感谢原作者的杰出工作。
 >
 > **本项目仅供个人学习和研究使用，后果自负。**
+
+## Demo
+
+![Demo](./assets/Generic%20PnP%20Monitor%202026-01-07%2014.16.28.gif)
 
 ## 🛡️ 拯救我的注意力 (Fuck Recommendation)
 

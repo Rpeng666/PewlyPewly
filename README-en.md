@@ -16,6 +16,11 @@ PewlyPewly
 > This project is intended for personal learning and research purposes only.
 > Use at your own risk.
 
+
+## Demo
+
+![Demo](./assets/Generic%20PnP%20Monitor%202026-01-07%2014.16.28.gif)
+
 ## 🛡️ Reclaim My Attention (Fuck Recommendation)
 
 > Your attention is being exploited
